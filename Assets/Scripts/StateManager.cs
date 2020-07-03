@@ -13,8 +13,8 @@ public class StateManager : MonoBehaviour
     private TextMeshProUGUI record;
 
     public static int currentCount = 0;
-    public static int recordCount = 1999;
-    public static int time = 10;
+    public static int recordCount;
+    public static int time = 60;
     private void Start()
     {
         SaveLoad.LoadFile();
