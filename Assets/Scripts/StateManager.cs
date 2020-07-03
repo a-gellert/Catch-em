@@ -14,9 +14,10 @@ public class StateManager : MonoBehaviour
 
     public static int currentCount = 0;
     public static int recordCount = 1999;
-    public static int time = 60;
+    public static int time = 10;
     private void Start()
     {
+        SaveLoad.LoadFile();
         StartCoroutine(Timer());
     }
 
@@ -32,6 +33,7 @@ public class StateManager : MonoBehaviour
         }
         if (time == 0)
         {
+            SaveLoad.SaveFile();
             Time.timeScale = 0;
         }
     }
