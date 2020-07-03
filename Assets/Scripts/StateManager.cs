@@ -15,9 +15,10 @@ public class StateManager : MonoBehaviour
     public static int currentCount = 0;
     public static int recordCount;
     public static int time;
-    public static bool isEndGame = false;
+    public static bool isEndGame;
     private void Start()
     {
+        isEndGame = false;
         time = 60;
         SaveLoad.LoadFile();
         StartCoroutine(Timer());
@@ -34,6 +35,7 @@ public class StateManager : MonoBehaviour
         }
         if (time == 0)
         {
+            StopCoroutine(Timer());
             timer.enabled = false;
             current.enabled = false;
             SaveLoad.SaveFile();
@@ -49,6 +51,10 @@ public class StateManager : MonoBehaviour
     {
         for (; ; )
         {
+            if (isEndGame)
+            {
+                yield break;
+            }
             time--;
             yield return new WaitForSeconds(1f);
         }

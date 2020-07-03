@@ -17,7 +17,7 @@ public class Ball : MonoBehaviour
     }
     private void Update()
     {
-       
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour
     {
         multiplier = Random.Range(0.5f, 2f);
         transform.localScale = new Vector3(scale.x * multiplier, scale.y * multiplier, 1);
-        speed = 50 / multiplier;
+        speed = 50 / multiplier + (200f / (StateManager.time + 1f));
         count = (int)(10 * speed);
         return speed;
     }
